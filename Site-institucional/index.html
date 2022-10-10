@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistoyanka</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/icone-head.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="simulador.css">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="banner">
+        <div class="header">
+            <div class="container">
+                <img id="logo" src="images/logo-nav.png" alt="">
+
+                <div class="navbar">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobreNos_click">Sobre nós</a></li>
+                    <li><a href="#corpo_calculadora">Simulador financeiro</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="inicio" class="title">
+            <div class="container">
+                <h1> Systoyanka </h1>
+
+                <p>
+                    Ajudá-lo a encontrar um sistema de <b>qualidade</b> é a nossa <b>prioridade</b>!
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="sobreNos_click"></div>
+
+    <!-- sobre nós -->
+    <div id="sobreNos">
+        <div class="container">
+            <img class="shopping_img" src="images/shopping.jpg" alt="">
+
+            <div class="quemSomos">
+                <h1>
+                    Quem somos?
+                </h1>
+
+                <p>
+                    A systoyanka é uma empresa focada no ramo de <b>monitoramento de estacionamentos de shopping centers</b>,
+                    que tem como principal objetivo desenvolver sistemas que auxiliam no fluxo e identificação de vagas.
+                    Por meio de sensores de presença, somos capazes de consolidar dados e permitir tomadas de decisões
+                    estratégicas.
+                </p>
+
+                <button> Faça seu cadastro! </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- pilares -->
+    <div class="pilares">
+        <h1> Nossos pilares </h1>
+        <div class="container">
+            <div class="box">
+                <div class="valores">
+                    <img class="star" src="images/estrela-icone.png" alt="">
+                    <h3> Missão </h3>
+                </div>
+
+                <p>
+                    Nossa missão é agir com praticidade e agilidade, possibilitando a facilidade de tomadas de decisões
+                    rápidas e inteligentes aos nossos clientes.
+                </p>
+            </div>
+
+            <div class="box">
+                <div class="valores">
+                    <img class="icones" src="images/visao-icone.png" alt="">
+                    <h3> Visão </h3>
+                </div>
+
+                <p>
+                    Ser referência no ramo de estacionamentos, visando sempre eficiência em nossos serviços.
+                </p>
+            </div>
+
+            <div class="box">
+                <div class="valores">
+                    <img class="icones" src="images/valor-icone.png" alt="">
+                    <h3> Valores </h3>
+                </div>
+
+                <p>
+                    Agimos com propósito, trabalhamos com simplicidade para entregarmos resultados eficazes, tendo como
+                    valor transparência e acesso.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulador -->
+
+    </div>
+    <!-- Simulador Financeiro -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100&family=Yanone+Kaffeesatz:wght@600&display=swap');
+    </style>
+    <div class="tela3">
+        <div id="corpo_calculadora">
+            <div class="container2">
+                <div class="box_titulo_simulador">
+                    <span class="titulo_simulador">Simule seus ganhos com nosso serviço<br>Tire suas duvidas</span>
+                </div>
+                <span class="subtitulo_simulador">Faça aqui uma simulação com dados aproximados de quanto seu
+                    estacionamento <br>deixara
+                    de perder com nosso monitoramento,<br>encontre conosco as melhores estratégias para inpulsionar os
+                    lucros!
+                </span>
+                <div class="simulador">
+                    <div class="conteudo">
+                        <div class='componentes_simulador'>
+
+                            <!-- Inputs -->
+                            <div class="vagas">
+                                <span class="simulador_texto">Existem aproximadamente quantas vagas no
+                                    estacionamento?</span>
+                                <input type="text" id="qtdvagas" class="input_vaga" value="1000" placeholder="0">
+                            </div>
+                            <div class="valor">
+                                <span class="simulador_texto">Qual o valor da vaga por hora?</span>
+                                <div class="conteudo_valor">
+                                    <span class="simulador_texto" style="font-size: 19pt;">R$</span><input id="valor"
+                                        class="input_vaga" value='5.00' placeholder="00,00">
+                                </div>
+                            </div>
+                            <div class="botao_area">
+                                <span>Clique para simular ➔</span>
+                                <button class="simular_botao" onclick="calcular()">Simular</button>
+                            </div>
+                        </div>
+
+                        <!-- Area de resultados -->
+                        <div class="resultado">
+                            <div class="resultado_calculo">
+                                <div class="res">
+                                    <span><b>Total ganho com nossa proposta</b></span>
+                                    <span id="tot_ganho" class="res_estilo"></span>
+                                </div>
+                                <div class="res">
+                                    <span>Total ganho sem nossa proposta</span>
+                                    <span id="tot_sem" class="res_estilo"></span>
+                                </div>
+                                <div class="res">
+                                    <span>Valor em perdas</span>
+                                    <span id="valor_perdas" class="res_estilo"></span>
+                                </div>
+                            </div>
+                            <div id="resultado_cadastro">
+                                Ficou interessado? <a href="cadastro.html" class="redirecionar_cadastro">clique aqui</a>
+                                para se cadastrar e saber mais
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Descrição da calculadora -->
+                    <div class="explicacao_simulador">
+                        <span>*Calculo realizado levando em consideração uma ausencia média de 30% no preenchimento das
+                            vagas de estácionamento
+                            dado esse encontrado por nosco com base em pesquisas realizadas em diversos estacionamentos
+                            de shopping após vericarmos
+                            a media de vagas preenchidas ao longo dos dias</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pós simulador - Tela 4 -->
+    <div class="container3">
+        <div class="boxes_informacoes">
+            <div class="area_titulo_informacoes">
+                <span>O que representam essas perdas?</span>
+            </div>
+            <div class="area_caixas_informacoes">
+                <div class="caixas_informacoes">
+                    <div class="divisao_informacoes_esquerda">
+                        Esquerda
+                    </div>
+                    <div class="divisao_informacoes_direita">
+                        Direita
+                    </div>
+                </div>
+                <div class="caixas_informacoes">
+                    <div class="divisao_informacoes_direita">
+                        Direita
+                    </div>
+                    <div class="divisao_informacoes_esquerda">
+                        Esquerda
+                    </div>
+                </div>
+                <div class="caixas_informacoes">
+                    <div class="divisao_informacoes_esquerda">
+                        Esquerda
+                    </div>
+                    <div class="divisao_informacoes_direita">
+                        Direita
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="box-footer">
+                <p>
+                    <b>Produtos</b>
+                </p>
+
+                <p>
+                    Sensores
+                </p>
+
+                <p>
+                    Segurança
+                </p>
+
+                <p>
+                    Sistema
+                </p>
+            </div>
+
+            <div class="box-footer">
+                <p>
+                    <b>Siga-nos em nossas redes sociais!</b>
+                </p>
+
+                <div class="social-media">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+
+                <p class="systoyanka">
+                    Systoyanka
+                </p>
+            </div>
+
+            <div class="box-footer">
+                <p>
+                    <b>Mais informações</b>
+                </p>
+
+                <p>
+                    Contrato
+                </p>
+
+                <p>
+                    Termos e condições
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script>
+    calcular()
+    function calcular() {
+        var valorhora = Number(valor.value) * 12
+        var semservico = Number(qtdvagas.value) * 0.7
+        var sem_ganho_mes = (semservico * valorhora) * 30
+        tot_sem.innerHTML = `<b>R$<span class="res_numeros">${sem_ganho_mes.toFixed(2)}</span></b>`
+
+        var comservico = Number(qtdvagas.value)
+        var com_ganho_mes = (comservico * valorhora) * 30
+        tot_ganho.innerHTML = `<b>R$<span class="res_numeros">${com_ganho_mes.toFixed(2)}</span></b>`
+
+        var prejuizo = com_ganho_mes - sem_ganho_mes
+        valor_perdas.innerHTML = `<b>R$<span class="res_numeros">${prejuizo.toFixed(2)}</span></b>`
+    }
+</script>
