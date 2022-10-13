@@ -128,12 +128,15 @@ label {
     justify-content: center;
     margin-right: 15px;
 }
-
+.outros a{
+    text-decoration: none;
+    color: black;
+}
 .outros p {
     margin-left: 15px;
 }
 
-.outros p:hover {
+.outros a:hover {
     color: #a49e9e;
     cursor: pointer;
 }
