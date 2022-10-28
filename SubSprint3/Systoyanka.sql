@@ -1,95 +1,112 @@
-use sprint2;
-
-Create table Endereço (
-idEndereço int primary key auto_increment,
-Cidade varchar(45),
-Estado varchar(45),
-Bairro varchar (45),
-CEP varchar (9),
- fkshopping int,constraint foreign key fkshopping (fkshopping) references Shopping (idshopping) 
-);
+create database systoyanka;
+use systoyanka;
 
 create table Shopping (
 idshopping int primary key auto_increment,
 Nome varchar(45),
 CNPJ char(14) unique,
-Telefone char (10),
-Login varchar (45) unique,
-senha varchar (45) 
+Telefone char (10)
 );
 
-create table Vagas (
-idvagas int primary key auto_increment,
-QTDvagas varchar(4),
-Andar char(2),
-Bloco varchar (4),
- fkshopping int,constraint foreign key fkshopping (fkshopping) references Shopping (idshopping)
+
+Create table Endereço (
+idEndereço int primary key auto_increment,
+Cidade varchar(45),
+Bairro varchar (45),
+CEP varchar (9),
+ fkshoppingE int,
+ constraint foreign key fkshoppingE (fkshoppingE) references Shopping (idshopping) 
 );
+
 
 create table Sensor (
-idsensor int primary key auto_increment,
-Nome varchar(45),
-fkvaga int,constraint foreign key fkvaga (fkvaga) references vagas(idvagas)
+idSensor int primary key auto_increment,
+Andar char(2),
+Bloco varchar (4),
+fkShoppingS int,constraint foreign key fkshoppingS (fkshoppingS) references Shopping (idshopping)
 );
 
 create table Leitura(
-idresposta int primary key auto_increment,
+idResposta int auto_increment,
 Dt_hora DATETIME, 
 Retorno int,
- fksensor int,constraint foreign key fksensor (fksensor) references sensor (idsensor)
+fkSensor int,constraint foreign key fkSensor (fkSensor) references Sensor (idSensor),
+primary key (idResposta, fkSensor)
 );
 
-insert into Shopping (Nome, CNPJ, Telefone, Login, senha) values
- ('Shopping Praça da moça', '52678945301254', '1185461247', 'shoppdm@gmail.com','pdm123'),
- ('Shopping Park São Caetano', '44566788901241', '1178451204', 'shoppsc@gmail.com','psc784'),
- ('Shopping Paulista', '14547856412457', '1154124680', 'shopp@gmail.com','sp3105'),
- ('Shopping Rio sul', '78451204578451', '2154687124', 'shoprs@gmail.com','rs178'),
- ('Shopping Centerminas', '87541245879645', '3178446124', 'shopc@gmail.com','c78456');
+create table Usuario (
+idUsuario int auto_increment,
+Login varchar(45),
+Senha varchar(45),
+Tipo varchar(45), constraint chkTipo 
+check (tipo in ('Admin','user')),
+fkShopping int,constraint foreign key fkShopping (fkShopping) references Shopping (idshopping),
+primary key (idUsuario, fkShopping)
+);
 
-insert into Endereço (cidade, estado, Bairro, CEP, fkshopping) values
- ( 'Diadema', 'São Paulo', 'Praça da moça','09910-720', 1),
-('São Caetano', 'São Paulo', 'Cerâmica','85412-120', 2),
-('São Paulo','São Paulo', 'Bela Vista','78451-202', 3),
-('Rio de Janeiro','Rio de Janeiro','Botafogo','98461-451', 4),
-('Belo Horizonte', 'Minas Gerais', 'União', '31170-678', 5);
+insert into Shopping (Nome, CNPJ, Telefone) values
+ ('Shopping Praça da moça', '52678945301254', '1185461247'),
+ ('Shopping Aricanduva', '24355214544132', '1140674545'),
+ ('Shopping JK Iguatemi', '64589092093425', '1140664066');
 
-insert into Vagas (Andar, Bloco, fkshopping) values
+insert into Endereço (cidade, Bairro, CEP, fkshoppingE) values
+ ( 'Diadema', 'Praça Da Moça','09910-720', 1),
+('São Paulo', 'aricanduva','03527-900', 2),
+('São Paulo', 'Vila Olímpia','04543-011', 3);
+
+insert into sensor (Andar, Bloco, fkshoppingS) values
 (01,'A',1),
-(02,'B',1),
-(03,'C',1),
-(02,'B',2),
 (01,'A',2),
-(02,'B',2),
-(03,'C',2),
-(02,'B',3),
-(03,'C',3),
 (01,'A',3),
-(01,'A',4),
-(02,'B',4),
-(03,'C',4),
-(01,'A',5),
-(02,'B',5),
-(03,'C',5);
-
-insert into sensor (Nome, fkvaga) values
-('shop praça da moça', 1),
-('shop Park São Caetano', 2),
-('shop Paulista', 3),
-('shop Rio sul', 4),
-('shop Centerminas', 5);
+(01,'B',1),
+(01,'B',2),
+(01,'B',3),
+(01,'C',1),
+(01,'C',2),
+(01,'C',3),
+(01,'D',1),
+(01,'D',2),
+(01,'D',3),
+(02,'A',1),
+(02,'A',2),
+(02,'A',3),
+(02,'B',1),
+(02,'B',2),
+(02,'B',3),
+(02,'C',1),
+(02,'C',2),
+(02,'C',3),
+(02,'D',1),
+(02,'D',2),
+(02,'D',3),
+(03,'A',1),
+(03,'A',2),
+(03,'A',3),
+(03,'B',1),
+(03,'B',2),
+(03,'B',3),
+(03,'C',1),
+(03,'C',2),
+(03,'C',3),
+(03,'D',1),
+(03,'D',2),
+(03,'D',3);
 
 insert into leitura (Dt_hora, Retorno, fksensor) values
-('2022-10-23-19:50:00', 1, 1),
-('2022-10-22-18:43:00',1, 2),
-('2022-10-20-14:15:00',0, 3),
-('2022-10-05-17:10:00',1, 4),
-('2022-10-30-16:15:00',1, 5);
+('2022-10-23 19:50:00', 1, 1),
+('2022-10-22 18:43:00', 1, 2),
+('2022-10-20 14:15:00', 0, 3),
+('2022-10-05 17:10:00', 1, 4),
+('2022-10-30 16:15:00', 1, 5);
+
+insert into usuario values
+(1, 'Brandão@sptech', 'sptech', 'Admin', 3),
+(2, 'Caramico@sptech', '12345', 'Admin', 1),
+(3, 'Victor@sptech', '40674545', 'user', 2);
 
 select * from endereço;
 
 select * from shopping;
-
-select * from vagas;
 
 select * from sensor;
 
@@ -98,16 +115,26 @@ select * from leitura;
 SELECT SUM(Retorno) FROM leitura;
 
 SELECT * FROM shopping JOIN endereço 
-	ON idShopping = fkShopping;
+	ON idShopping = fkShoppingE;
     
-SELECT * FROM shopping JOIN vagas 
-	ON idShopping = fkShopping;
+SELECT * FROM shopping JOIN sensor 
+	ON idShopping = fkShoppingS;
 
-SELECT * FROM vagas JOIN sensor 
-	ON idVagas = fkvaga;
+SELECT * FROM sensor JOIN leitura 
+	ON idSensor = fkSensor;
     
 SELECT * FROM sensor JOIN leitura 
 	ON idSensor = fksensor;
     
--- SELECT * FROM shopping JOIN vagas  ON idShopping = fkShopping join endereço ON idShopping = fkShopping;
-	
+SELECT * FROM shopping JOIN endereço 
+	ON idShopping = fkShoppingE
+    join sensor on idShopping = fkShoppingS
+    join usuario on idShopping = fkShopping;
+    
+    SELECT * FROM shopping JOIN endereço 
+	ON idShopping = fkShoppingE
+    join sensor on idShopping = fkShoppingS
+    join usuario on idShopping = fkShopping
+    where cidade like 'D%';
+    
+    
