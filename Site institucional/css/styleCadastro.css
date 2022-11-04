@@ -1,4 +1,16 @@
 
+.header {
+    /* position: fixed; */
+    background-color: rgba(1, 1, 1, 0.8);
+    width: 100%;
+}
+
+.tela{
+    display: flex;
+    background-image: url(../images/Systoyanka.png);
+    background-size: cover;
+}
+
 .text_cadastrar{
     align-self: center;
     text-align: center;
@@ -58,9 +70,7 @@
 .container_cadastro a:hover{
     color: #a49e9e;
 }
-.tela{
-    display: flex;
-}
+
 .alerta_cad{
     background-color: #D4CCCB;
     border: solid rgb(66, 167, 226) 1px;

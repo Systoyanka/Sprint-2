@@ -5,12 +5,12 @@
     font-family: 'Fredoka', sans-serif;
 }
 
-.teste {
-    background-image: url(images/Systanyanka.png);
+.background {
+    background-image: url(../images/Systoyanka.png);
     background-size: cover;
 }
 
-.header {
+.background .header {
     /* position: fixed; */
     background-color: rgba(1, 1, 1, 0.8);
     width: 100%;

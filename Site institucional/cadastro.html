@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleCadastro.css">
-    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="stylesheet" href="css/styleCadastro.css">
+    <link rel="stylesheet" href="css/styleLogin.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
     <title>Cadastro</title>
 </head>
+
 <body>
     <div class="header">
         <div class="container">
@@ -18,8 +20,8 @@
             </div>
         </div>
     </div>
-    <div class="tela">
 
+    <div class="tela">
         <div class="container_cadastro">
             <div class="titulos_cad">
                 <span class="text_cadastrar">
@@ -30,16 +32,18 @@
             <div class='boxes_cadastro'>
                 <div class="boxes_1">
                     <div class="box_cad">
-                        <span>Nome</span>            
+                        <span>Nome</span>
                         <input type="text" id="nome_ipt" placeholder="Systoyanka" oninput="mudar()">
                     </div>
                     <div class="box_cad">
                         <span>CNPJ</span>
-                        <input type="text" id="cnpj_ipt" maxLength = "14" placeholder="00.000.000/0000-00" oninput="mudar()">
+                        <input type="text" id="cnpj_ipt" maxLength="14" placeholder="00.000.000/0000-00"
+                            oninput="mudar()">
                     </div>
                     <div class="box_cad">
                         <span>Telefone Fixo</span>
-                        <input type="text" id="telefone_ipt" maxLength = "10" placeholder="(00)0000-0000" oninput="mudar()">
+                        <input type="text" id="telefone_ipt" maxLength="10" placeholder="(00)0000-0000"
+                            oninput="mudar()">
                     </div>
                 </div>
                 <div class="boxes_2">
@@ -53,7 +57,7 @@
                     </div>
                     <div class="box_cad">
                         <span>Cep</span>
-                        <input type="text" id="cep_ipt" maxLength = "8" placeholder="0000-000" oninput="mudar()">
+                        <input type="text" id="cep_ipt" maxLength="8" placeholder="0000-000" oninput="mudar()">
                     </div>
                 </div>
                 <div class="boxes_3">
@@ -75,13 +79,15 @@
             <span>Já possui cadastro? <a href="login.html">Faça login!</a></span>
             <div id="sucess_cad" class="alerta_cad" style="display: none;">Cadastro efetuado <br>com sucesso!!</div>
         </div>
+
     </div>
 </body>
+
 </html>
 
 <script>
     var quantidade = 0
-    function cadastro(){
+    function cadastro() {
         var nome = nome_ipt.value
         var cnpj = cnpj_ipt.value
         var tel = telefone_ipt.value
@@ -96,63 +102,63 @@
         var tel_num = Number(tel)
         var cep_num = Number(cep)
 
-        if(nome == ""){
-            alert (`Por favor inserir um nome`)
+        if (nome == "") {
+            alert(`Por favor inserir um nome`)
             nome_ipt.style.border = 'solid 1px red';
         }
-        else if(cnpj.length < 14){
+        else if (cnpj.length < 14) {
             alert(`Por favor inserir um CNPJ com 14 digitos`)
             cnpj_ipt.style.border = 'solid 1px red';
         }
-        else if(Number.isNaN(cnpj_num) || cnpj_num == 0){
+        else if (Number.isNaN(cnpj_num) || cnpj_num == 0) {
             alert(`CNPJ "${cnpj}" inválido! O CNPJ deve ser composto apenas por números`)
             cnpj_ipt.style.border = 'solid 1px red';
         }
-        else if(tel.length < 10){
+        else if (tel.length < 10) {
             alert(`Por favor inserir um telefone com 10 digitos`)
             telefone_ipt.style.border = 'solid 1px red';
         }
-        else if(Number.isNaN(tel_num) || tel_num == 0){
+        else if (Number.isNaN(tel_num) || tel_num == 0) {
             alert(`Telefone ${tel} inválido! O telefone deve ser composto apenas por números`)
             telefone_ipt.style.border = 'solid 1px red';
         }
-        else if(cidade == ""){
-            alert (`Por favor inserir uma cidade`)
+        else if (cidade == "") {
+            alert(`Por favor inserir uma cidade`)
             cidade_ipt.style.border = 'solid 1px red';
         }
-        else if(bairro == ""){
-            alert (`Por favor inserir um bairro`)
+        else if (bairro == "") {
+            alert(`Por favor inserir um bairro`)
             bairro_ipt.style.border = 'solid 1px red';
         }
-        else if(cep.length < 8){
+        else if (cep.length < 8) {
             alert(`inserir um CEP com 8 digitos`)
             cep_ipt.style.border = 'solid 1px red';
         }
-        else if(Number.isNaN(cep_num) || cep_num == 0){
-            alert (`CEP "${cep}" invalido! O CEP deve ser composto apenas por números`)
+        else if (Number.isNaN(cep_num) || cep_num == 0) {
+            alert(`CEP "${cep}" invalido! O CEP deve ser composto apenas por números`)
             cep_ipt.style.border = 'solid 1px red';
         }
-        else if(login == ""){
-            alert (`Por favor inserir um login`)
+        else if (login == "") {
+            alert(`Por favor inserir um login`)
             login_ipt.style.border = 'solid 1px red';
         }
-        else if (senha == ""){
-            alert (`Por favor inserir uma senha`)
+        else if (senha == "") {
+            alert(`Por favor inserir uma senha`)
             senha_ipt.style.border = 'solid 1px red';
         }
-        else if (senha != senha2){
+        else if (senha != senha2) {
             alert('Senhas divergente')
             senha_ipt.style.border = 'solid 1px red';
             senha2_ipt.style.border = 'solid 1px red';
-        }else{
+        } else {
             sucess_cad.style.display = "block";
 
             setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
+                window.location = "login.html";
+            }, "2000")
         }
     }
-    function mudar(){
+    function mudar() {
         nome_ipt.style.border = '0';
         cnpj_ipt.style.border = '0';
         telefone_ipt.style.border = '0';
