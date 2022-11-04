@@ -90,7 +90,7 @@
     function cadastro() {
         var nome = nome_ipt.value
         var cnpj = cnpj_ipt.value
-        var tel = telefone_ipt.value
+        var telefone = telefone_ipt.value
         var cidade = cidade_ipt.value
         var bairro = bairro_ipt.value
         var cep = cep_ipt.value
@@ -99,7 +99,7 @@
         var senha2 = senha2_ipt.value
 
         var cnpj_num = Number(cnpj)
-        var tel_num = Number(tel)
+        var telefone_num = Number(telefoneefone)
         var cep_num = Number(cep)
 
         if (nome == "") {
@@ -114,13 +114,13 @@
             alert(`CNPJ "${cnpj}" inválido! O CNPJ deve ser composto apenas por números`)
             cnpj_ipt.style.border = 'solid 1px red';
         }
-        else if (tel.length < 10) {
-            alert(`Por favor inserir um telefone com 10 digitos`)
-            telefone_ipt.style.border = 'solid 1px red';
+        else if (telefoneefone.length < 10) {
+            alert(`Por favor inserir um telefoneefone com 10 digitos`)
+            telefoneefone_ipt.style.border = 'solid 1px red';
         }
-        else if (Number.isNaN(tel_num) || tel_num == 0) {
-            alert(`Telefone ${tel} inválido! O telefone deve ser composto apenas por números`)
-            telefone_ipt.style.border = 'solid 1px red';
+        else if (Number.isNaN(telefone_num) || telefone_num == 0) {
+            alert(`telefoneefone ${telefoneefone} inválido! O telefoneefone deve ser composto apenas por números`)
+            telefoneefone_ipt.style.border = 'solid 1px red';
         }
         else if (cidade == "") {
             alert(`Por favor inserir uma cidade`)
@@ -151,13 +151,78 @@
             senha_ipt.style.border = 'solid 1px red';
             senha2_ipt.style.border = 'solid 1px red';
         } else {
-            sucess_cad.style.display = "block";
+            aguardar();
 
+            if (senha == senha2) {
+                if (nome == "" || cnpj == "" || telefone == "" || cidade == "" || bairro == "" || cep == "" || login == "" || senha == "") {
+                    cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+                    finalizarAguardar();
+                    return false;
+                }
+                else {
+                    setInterval(sumirMensagem, 5000)
+                }
+
+                // Enviando o valor da nova input
+                fetch("/usuarios/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        nomeServer: nome,
+                        cnpjServer: cnpj,
+                        telefoneServer: telefone,
+                        cidadeServer: cidade,
+                        bairroServer: bairro,
+                        cepServer: cep,
+                        loginServer: login,
+                        senhaServer: senha,
+                    })
+                }).then(function (resposta) {
+
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000")
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw ("Houve um erro ao tentar realizar o cadastro!");
+                    }
+                }).catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+                return false;
+            } else {
+                alert('Senha errada')
+            }
+
+
+            sucess_cad.style.display = "block";
             setTimeout(() => {
                 window.location = "login.html";
             }, "2000")
         }
+
+        function sumirMensagem() {
+            cardErro.style.display = "none"
+        }
     }
+
     function mudar() {
         nome_ipt.style.border = '0';
         cnpj_ipt.style.border = '0';
