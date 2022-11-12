@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistoyanka</title>
+    <link rel="stylesheet" href="css/styleDashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/icone-head.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img id="logo" src="images/logo-nav.png" alt="">
+
+            <div class="navbar">
+                <li> Olá, Aricanduva! <a href=""> <i class="fa-solid fa-user"> </i></a> </li>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="intro">
+        <div class="container">
+            <div class="menu">
+
+                <div class="topicos">
+
+                    <a style="color: white;" href="dashboard.html"><i class="fa-solid fa-house"></i></a>
+
+                    <a style="color: white;" href="dashboard2.html"><i class="fa-solid fa-bars"></i></a>
+
+                    <a style="color: white;" href=""><i class="fa-solid fa-gear"></i></a>
+
+                    <button class="sair" onclick="exit()"> Sair </button>
+                </div>
+
+            </div>
+
+            <!-- alerta -->
+            <div class="dashboard">
+                <div class="alerta">
+                    <section>
+                        <p class="alerta_texto">
+                            Porcentagem de ocupação: <b style="color: yellow;" id="porcentagem">30%</b>
+                        </p>
+
+                        <p class="dados">
+                            Dados em tempo real: <span id="data"></span>
+                        </p>
+
+                    </section>
+                </div>
+
+                <!-- analystics -->
+                <div class="analystics">
+                    <div class="container">
+                        <div class="kpi kpi_critico">
+                            <p>
+                                Crítico
+                            </p>
+
+                            <p class="porcentagem_kpi">
+                                0%
+                            </p>
+                        </div>
+
+                        <div class="kpi kpi_emergencia">
+                            <p>
+                                Emergência
+                            </p>
+
+                            <p class="porcentagem_kpi">
+                                30%
+                            </p>
+                        </div>
+
+                        <div class="kpi kpi_ideal">
+                            <p>
+                                Ideal
+                            </p>
+
+                            <p class="porcentagem_kpi">
+                                65%
+                            </p>
+                        </div>
+
+                        <div class="kpi kpi_acimaMedia">
+                            <p>
+                                Acima da média
+                            </p>
+
+                            <p class="porcentagem_kpi">
+                                80%
+                            </p>
+                        </div>
+
+                        <div class="kpi kpi_perfeito">
+                            <p>
+                                Perfeito
+                            </p>
+
+                            <p class="porcentagem_kpi">
+                                100%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- grafico doughnuts -->
+                <div class="chart">
+                    <div class="container">
+
+                        <div class="ladoA">
+                            <h1>
+                                Porcentagem de ocupação por 
+                            </h1>
+                            <h1>
+                                andar em tempo real
+                            </h1>
+                            <section class="grafico_doughnuts">
+                                <div style="width: 50vh;">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </section>
+
+                            <div class="box">
+                                <section class="etiquetas">
+                                    <p>
+                                        <li>
+                                            Há uma <b>baixa de 35%</b> na ocupação do estacionamento às
+                                            <b>quartas-feiras.</b>
+                                        </li>
+                                    </p>
+                                </section>
+
+                                <section class="etiquetas">
+                                    <li>
+                                        Aos finais de semana, os índices de ocupação chegam a <b>85%.</b>
+                                    </li>
+                                </section>
+
+
+                                <section class="etiquetas">
+                                    <li>
+                                        No último mês, o 2° andar foi o <b>mais utilizado</b> entre os andares.
+                                    </li>
+                                </section>
+                            </div>
+                        </div>
+
+
+
+                        <div class="ladoB">
+                            <h1>
+                                Picos mais altos de ocupação 
+                            </h1>
+                            <h1>
+                                durante os dias da semana
+                            </h1>
+                            <section>
+                                <div style="width: 70vh;">
+                                    <canvas id="myChart2"></canvas>
+                                </div>
+                            </section>
+
+                            <h1>
+                                Porcentagem de ocupação mensal
+                            </h1>
+
+                            <section>
+                                <div>
+                                    <canvas style="width: 70vh;" id="myChart3"></canvas>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="box-footer">
+                <p>
+                    <b>Produtos</b>
+                </p>
+
+                <p>
+                    Sensores
+                </p>
+
+                <p>
+                    Segurança
+                </p>
+
+                <p>
+                    Sistema
+                </p>
+            </div>
+
+            <div class="box-footer">
+                <p>
+                    <b>Siga-nos em nossas redes sociais!</b>
+                </p>
+
+                <div class="social-media">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+
+                <p class="systoyanka">
+                    Systoyanka
+                </p>
+            </div>
+
+            <div class="box-footer">
+                <p>
+                    <b>Mais informações</b>
+                </p>
+
+                <p>
+                    Contrato
+                </p>
+
+                <p>
+                    Termos e condições
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- Graficos Doughnut lado B -->
+<script>
+    const data = {
+        labels: [
+            '1° Andar',
+            '2° Andar',
+            '3° Andar',
+            '4° Andar',
+        ],
+        datasets: [{
+            label: 'Porcentagem',
+            data: [28, 59, 78, 89],
+            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: [
+                'rgb(255, 0, 0)',
+                'rgb(255, 255, 0)',
+                'rgb(0, 128, 0)',
+                'rgb(80, 214, 18)',
+            ],
+            borderColor: 'rgb(255, 99, 132)', 
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                }
+            }
+        }
+    };
+</script>
+
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+
+
+
+<!-- Graficos lado B -->
+<script>
+    const labels = [
+        'Domingo',
+        'Segunda-feira',
+        'Terça-feira',
+        'Quarta-feira',
+        'Quinta-feira',
+        'Sexta-feira',
+        'Sábado',
+    ]
+
+    const labels2 = [
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+    ];
+
+    const data2 = {
+        labels: labels,
+        datasets: [{
+            label: 'Porcentagem',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [85, 60, 50, 29.75, 60, 30],
+        }]
+    };
+
+
+
+    const data3 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Porcentagem',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [90, 70, 75, 82, 60, 100],  
+        }]
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+            plugins: {
+                legend: {
+                    color: 'rgb(255, 255, 255)'
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+            }
+        }
+
+    };
+
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                }
+            }
+        }
+    };
+</script>
+
+<script>
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    const myChart3 = new Chart(
+        document.getElementById('myChart3'),
+        config3
+    );
+</script>
+
+
+
+
+
+
+
+
+<script>
+    var now = new Date()
+
+    document.getElementById('data').innerHTML = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} às ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+</script>
+<!-- Botão -->
+<script>
+    function exit() {
+        window.location.href = "index.html";
+    }
+</script>
+
+
+</html>
